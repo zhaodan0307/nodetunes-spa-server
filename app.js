@@ -72,4 +72,10 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
+
+// start server here rather than in bin/www
+const port = process.env.PORT || 3000
+app.listen(port, () => console.log(`Running on port ${port}`))
+
+
 module.exports = app;
