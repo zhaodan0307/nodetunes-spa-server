@@ -31,8 +31,18 @@ app.use('/api/artists',artistsRouter)
 // mongodb connection w/mongoose
 const mongoose = require('mongoose')
 
+
+//这里是dotenv的信息，
+// if in dev mode, use our .env file for config variables
+if(process.env.NODE_ENV !== 'production'){
+    require('dotenv').config()
+}
+
+
+
+
 //这里如果是测试，是不是能连接上服务器
-mongoose.connect(globals.db,{
+mongoose.connect(process.env.DATABASE_URL,{
   useNewUrlParser: true,
   useUnifiedTopology: true
 
